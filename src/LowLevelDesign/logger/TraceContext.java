@@ -4,17 +4,15 @@ import java.util.UUID;
 
 public class TraceContext {
 
-    private static final ThreadLocal<String> traceId =
-            ThreadLocal.withInitial(() -> UUID.randomUUID().toString());
-
-    private static final ThreadLocal<String> spanId =
-            ThreadLocal.withInitial(() -> UUID.randomUUID().toString());
+    private static final ThreadLocal<String> traceId = ThreadLocal.withInitial(() -> UUID.randomUUID().toString());
+    private static final ThreadLocal<String> spanId = ThreadLocal.withInitial(() -> UUID.randomUUID().toString());
 
     public static String getTraceId() {
         return traceId.get();
     }
 
     public static String getSpanId() {
+        newSpan();
         return spanId.get();
     }
 

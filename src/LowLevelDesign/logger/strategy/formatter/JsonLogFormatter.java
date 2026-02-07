@@ -10,7 +10,8 @@ public class JsonLogFormatter implements LogFormatter {
     @Override
     public String format(LogMessage msg) {
         return "{" +
-                "\"timestamp\":\"" +
+                "\"timestamp\":" + msg.getTimestamp() + "," +
+                "\"timestampIso\":\"" +
                 Instant.ofEpochMilli(msg.getTimestamp()) + "\"," +
                 "\"level\":\"" + msg.getLogLevel() + "\"," +
                 "\"thread\":\"" + msg.getThreadName() + "\"," +

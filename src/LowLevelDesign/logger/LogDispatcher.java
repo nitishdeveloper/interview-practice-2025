@@ -9,13 +9,8 @@ import java.util.concurrent.*;
 public class LogDispatcher {
 
     private static volatile LogDispatcher INSTANCE;
-
-    private final BlockingQueue<LogMessage> queue =
-            new ArrayBlockingQueue<>(10_000);
-
-    private final ExecutorService worker =
-            Executors.newSingleThreadExecutor();
-
+    private final BlockingQueue<LogMessage> queue = new ArrayBlockingQueue<>(10_000);
+    private final ExecutorService worker = Executors.newSingleThreadExecutor();
     private final LogFormatter formatter;
     private final List<LogAppender> appenders;
     private volatile boolean running = true;
